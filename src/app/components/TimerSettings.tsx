@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, Fragment } from "react";
-import { fetchData, settingTimeItems } from "@/helpers";
+import { fetchData, settingTimeItems } from "../helpers";
 import { Dialog, Transition } from "@headlessui/react";
 import { toast } from "react-toastify";
 import SettingsIcon from "../Icons/SettingsIcon";
@@ -14,9 +14,9 @@ type Items = {
 export default function TimerSettings() {
   const [isOpen, setIsOpen] = useState(false);
   const [timeItems, setTimeItems] = useState<Items>({
-    work: 0,
-    shortBreak: 0,
-    longBreak: 0,
+    work: 25,
+    shortBreak: 5,
+    longBreak: 30,
   });
 
   useEffect(() => {

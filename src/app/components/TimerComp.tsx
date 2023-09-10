@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState, Fragment } from "react";
-import { fetchData } from "@/helpers";
+import { fetchData } from "../helpers";
 import { Tab } from "@headlessui/react";
 import TimerSettings from "./TimerSettings";
 import Timer from "./Timer";
@@ -24,7 +24,9 @@ export default function TimerComp() {
 
   useEffect(() => {
     const existingTimeItems = fetchData("TimeItmes");
-    setDataTime(existingTimeItems.timeItem);
+    if (existingTimeItems.timeItem) {
+      setDataTime(existingTimeItems.timeItem);
+    }
   }, []);
 
   return (

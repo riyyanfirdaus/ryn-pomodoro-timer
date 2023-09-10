@@ -10,7 +10,7 @@ export default function Timer({ time }: { time: number }) {
   useEffect(() => {
     if (isActive && timeStatus > 0) {
       const timeout = setInterval(() => {
-        setTimeStatus((time) => time - 1);
+        setTimeStatus((prev) => prev - 1);
       }, 1000);
 
       return () => clearInterval(timeout);
