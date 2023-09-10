@@ -5,14 +5,12 @@ import PauseIcon from "../Icons/PauseIcon";
 
 export default function Timer({ time }: { time: number }) {
   const [timeStatus, setTimeStatus] = useState(time * 60);
-  const [statusBar, setStatusBar] = useState<number>(0);
   const [isActive, setIsActive] = useState<boolean>(false);
 
   useEffect(() => {
     if (isActive && timeStatus > 0) {
       const timeout = setInterval(() => {
         setTimeStatus((time) => time - 1);
-        setStatusBar(timeStatus - 1);
       }, 1000);
 
       return () => clearInterval(timeout);
