@@ -1,7 +1,7 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import TimerComp from "./components/TimerComp";
-import Login from "./components/LoginComp";
+import TimerComp from "../components/TimerComp";
+import Login from "../components/LoginComp";
 
 export default function Home() {
   return (

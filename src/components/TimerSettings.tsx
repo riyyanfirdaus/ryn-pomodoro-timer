@@ -4,6 +4,7 @@ import { fetchData, settingTimeItems } from "../helpers";
 import { Dialog, Transition } from "@headlessui/react";
 import { toast } from "react-toastify";
 import SettingsIcon from "../Icons/SettingsIcon";
+import { useTimerStore } from "@/store";
 
 type Items = {
   work: number;
@@ -12,6 +13,7 @@ type Items = {
 };
 
 export default function TimerSettings() {
+  const { dataTimer, updateTimer } = useTimerStore();
   const [isOpen, setIsOpen] = useState(false);
   const [timeItems, setTimeItems] = useState<Items>({
     work: 25,
@@ -20,10 +22,7 @@ export default function TimerSettings() {
   });
 
   useEffect(() => {
-    const existingTimeItems = fetchData("TimeItmes");
-    if (existingTimeItems.timeItem) {
-      setTimeItems(existingTimeItems.timeItem);
-    }
+    console.log(timeItems);
   }, []);
 
   const handelChange = (e: any) => {
@@ -35,7 +34,8 @@ export default function TimerSettings() {
 
   const handleSubmit = () => {
     try {
-      settingTimeItems(timeItems);
+      // settingTimeItems(timeItems);
+      updateTimer(timeItems);
       setIsOpen(false);
       return toast.success("Berhasil merubah settings");
     } catch (e) {
